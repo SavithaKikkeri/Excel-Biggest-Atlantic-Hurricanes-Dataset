@@ -1,49 +1,46 @@
+# Biggest Atlantic Hurricanes Analysis 🌀
 
-# Biggest Atlantic Hurricanes Dataset
+## Project Overview
+This Excel project provides a comprehensive dataset and analysis of the most significant hurricanes in Atlantic history. The workbook tracks historical storm data, including dates, financial impact, and intensity categories.
 
-This dataset contains information about the most significant Atlantic hurricanes recorded from 1870 to 2017. It includes key details about each hurricane, such as name, start date, damage in USD millions, Saffir-Simpson category, and maximum wind speed.
+## 📂 Dataset Structure
+The main dataset includes the following key metrics for each hurricane:
+* **Name:** The official name of the hurricane.
+* **Start Date:** The date the storm began.
+* **Damage (USD Millions):** The estimated financial impact of the storm at the time.
+* **Category:** The Saffir-Simpson hurricane scale rating (1-5).
+* **Max Wind Speed:** The maximum sustained wind speeds recorded.
 
-## Dataset Columns
+## 🌪️ Data Preview
+Here is a sample of the data contained in the spreadsheet:
 
-- **Name** – The name of the hurricane.
-- **Start Date** – The date when the hurricane started.
-- **Damage (USD Millions)** – Estimated economic damage caused by the hurricane in millions of US dollars.
-- **Category** – Saffir-Simpson hurricane category (1–5), indicating hurricane intensity.
-- **Max Wind Speed** – Maximum sustained wind speed in miles per hour (mph).
+| Name | Start Date | Damage (USD Millions) | Category | Max Wind Speed (mph) |
+| :--- | :--- | :--- | :--- | :--- |
+| **San Marcos** | October 5, 1870 | 12 | 3 | 129 |
+| **Sea Islands** | August 15, 1893 | 1 | 3 | 129 |
+| **Chenier Caminanda** | September 27, 1893 | 5 | 4 | 156 |
+| **San Ciriaco** | August 3, 1899 | 20 | 4 | 156 |
+| **Galveston** | August 27, 1900 | 20 | 4 | 156 |
 
-## Saffir-Simpson Hurricane Scale
+## ⚡ Key Excel Features
 
-| Category | Max Wind Speed (mph) |
-|----------|--------------------|
-| 1        | 95–110             |
-| 2        | 111–129            |
-| 3        | 130–156            |
-| 4        | 157–184            |
-| 5        | 157 and over       |
+### The `SWITCH` Function
+This project utilizes the **`SWITCH`** function to streamline complex logic, replacing older, messier nested `IF` statements.
 
-> Note: Wind speeds for categories 4 and 5 sometimes overlap in historical records due to measurement differences.
+In this context, `SWITCH` is likely used to automatically determine the **Wind Speed Range** or a **Severity Label** based on the Hurricane Category.
 
-## Key Insights
+<img width="382" height="155" alt="image" src="https://github.com/user-attachments/assets/052d2a17-88f3-4a17-8d2b-3bb1422a0e69" />
 
-- The dataset captures both historical and modern hurricanes.
-- Economic damages range from minor impacts (1 million USD) to catastrophic events (300,000 million USD, e.g., Hurricane Irma in 2017).
-- Several hurricanes reached Category 5, the highest intensity level.
-- Dates show that hurricanes have been consistently impacting the Atlantic region over the past 150+ years.
 
-## Usage
+**Example Logic:**
+Instead of writing multiple `IF` statements, the `SWITCH` function evaluates the Category (e.g., cell `D2`) and returns the corresponding Wind Speed:
 
-This dataset can be used for:
-
-- Data analysis and visualization
-- Studying historical hurricane patterns
-- Risk assessment and disaster preparedness
-- Machine learning projects related to weather prediction
-
-## File Information
-
-- **Filename:** `Biggest_Atlantic_Hurricanes.xlsx`
-- **Format:** Excel (.xlsx)
-- **Contents:** Full dataset with columns as described above.
-
-- ##Screenshots
-- <img width="1034" height="570" alt="image" src="https://github.com/user-attachments/assets/ebff0064-3a00-457c-9b1d-190c7d00b88b" />
+```excel
+=SWITCH(D2, 
+   1, "74-95 mph", 
+   2, "96-110 mph", 
+   3, "111-129 mph", 
+   4, "130-156 mph", 
+   5, "157 mph or higher", 
+   "Unknown"
+)
